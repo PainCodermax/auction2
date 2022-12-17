@@ -33,20 +33,18 @@ List<User> users = (List<User>)request.getAttribute("users");
 			<%
 				if (session.getAttribute("user") == null) {
 			%>  
-<!-- 			<a href="login.jsp">您好,请登录</a> -->
 			<a href="<%=path%>/login.jsp"><font color="#A6686A">Xin chào, vui lòng đăng nhập </font></a>
 			<%
 				} else {
 			%>  
 			        <a href="<%=path %>/UserServlet?user_id=<%=((User)session.getAttribute("user")).getId() %>"><font color="#A6686A">Xin chào,${user.name} </font></a> 
-			<a href="<%=path%>/IndexServlet?login=no"><font color="#A6686A"><font color="#D6686A">注销</font> </font></a>
+			<a href="<%=path%>/IndexServlet?login=no"><font color="#A6686A"><font color="#D6686A">đăng xuất</font> </font></a>
 			<%
 				}
 			%>
 			<a href="index.jsp">Trang chủ</a>
 		</nav>
 	</div>
-	<!-- 搜索框 -->
 	<div class="HomePageTitle2">
 	    <div class="serchBox">
 		<form action="SerchServlet" name="search" class="search" method="post" ><br>
@@ -83,11 +81,6 @@ function SumbitJudge() {
 		</div>
 		<div class="watchBox2" id="watchBox2">
 			<p class="h2">Duyệt</p>
-<!-- 			<div> -->
-<!-- 			<img alt="" src=""> -->
-<!-- 			<p> </p> -->
-<!-- 			<p class="p2" id=""></p> -->
-<!-- 			</div> -->
 		</div>
 	</div>
 	

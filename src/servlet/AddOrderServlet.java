@@ -56,22 +56,18 @@ public class AddOrderServlet extends HttpServlet {
 		if (type.equals("book")) {
 			BookDao thisBookDao=BookDaoFactory.getBookDaoInstance();
 			thisBookDao.updateOrder(commodityId, price, winnerId);
-			System.out.println("ç«�æ‹�æˆ�å�Ÿ");
 		}
 		if (type.equals("watch")) {
 			WatchDao thisWatchDao=WatchDaoFactory.getWatchDaoInstance();
 			thisWatchDao.updateOrder(commodityId, price, winnerId);
-			System.out.println("ç«�æ‹�æˆ�å�Ÿ");
 		}
 		if (type.equals("stamp")) {
 			StampDao thisStampDao=StampDaoFactory.getDaoInstance();
 			thisStampDao.updateOrder(commodityId, price, winnerId);
-			System.out.println("ç«�æ‹�æˆ�å�Ÿ");
 		}
 		if (type.equals("wine")) {
 			WineDao thisWineDao=WineDaoFactory.getDaoInstance();
 			thisWineDao.updateOrder(commodityId, price, winnerId);
-			System.out.println("ç«�æ‹�æˆ�å�Ÿ");
 		}
 	}
 

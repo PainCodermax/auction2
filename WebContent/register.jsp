@@ -2,7 +2,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-//获取返回的错误值
 String error = request.getParameter("register");
 if(error == null){
 	error = "";
@@ -13,7 +12,7 @@ if(error == null){
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>用户注册</title>
+    <title>Đăng ký người dùng</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/base.css">
@@ -33,26 +32,26 @@ if(error == null){
                 <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
                 <form action="RegisterServlet" method="post" id="myform">
                     <p class="p-input pos">
-                        <label for="tel">用户名</label>
+                        <label for="tel">tên tài khoản</label>
                         <input type="text" id="username" autocomplete="off" name="username" onchange="registerUserName()">
-                        <span class="tel-warn tel-err" style="display:none;" id="msg"><em>用户名已存在</em><i class="icon-warn"></i></span>
+                        <span class="tel-warn tel-err" style="display:none;" id="msg"><em>tên đăng kí đã được sử dụng</em><i class="icon-warn"></i></span>
                         <span class="tel-warn tel-err "><font id="name_error"></font></span>
                     </p>
                     <p class="p-input pos " id="pass">
-                        <label for="passport">输入密码</label>
+                        <label for="passport">nhập mật khẩu</label>
                         <input type="password" id="pass1" name="password">
                         <span class="tel-warn pwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
                     </p>
                     <p class="p-input pos " id="confirmpwd">
-                        <label for="passport2">确认密码</label>
+                        <label for="passport2">Xác nhận mật khẩu</label>
                         <input type="password" id="pass2" name="newpassword">
                         <span class="tel-warn confirmpwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
                         <span class="tel-warn tel-err "><font id="pass_error"></font></span>
                     </p>
-                    <button class="lang-btn" id="submit" type="submit">注册</button>
+                    <button class="lang-btn" id="submit" type="submit">Đăng ký</button>
                 </form>
-                <div class="bottom-info">已有账号，<a href="login.jsp">马上登录</a></div>
-                <p class="right">在线拍卖系统 by © 2019</p>
+                <div class="bottom-info">Bạn đã có tài khoản ?<a href="login.jsp">Đăng nhập ngay bây giờ</a></div>
+                <p class="right"> by © 2019</p>
             </div>
         </div>
     </div>
@@ -125,7 +124,6 @@ if(error == null){
  				request.send("username="+username);
  		}
         format();
-    	//阻止表单提交
     	var submitBtn = document.getElementById("submit");
  		submitBtn.onclick = function (event) {
  		
@@ -136,16 +134,16 @@ if(error == null){
 	    	var pass_error=document.getElementById("pass_error").innerText;
 	    	var msg = document.getElementById("msg");
 	    	if(msg.style.display == ""){
-	    		alert("用户名已存在");
+	    		alert("tên đăng kí đã được sử dụng");
 	    		return false;
 	    	}
   			if(name==""||pass1==""&&pass1==""||name==""){
-    			alert("用户名或密码不能为空");
-    			name_error = "用户名或密码不能为空";
+    			alert("Tên người dùng hoặc mật khẩu không được để trống");
+    			name_error = "Tên người dùng hoặc mật khẩu không được để trống";
     			
     		}else if(pass1 != pass2){
-    			alert("两次密码不相同");
-    			pass_error = "两次密码不相同";
+    			alert("hai mật khẩu khác nhau");
+    			pass_error = "hai mật khẩu khác nhau";
     			
     		}else{
     			

@@ -78,29 +78,20 @@ function auction() {
 	    return false;
 	}
 	var max_price=parseFloat(document.getElementById("price").value);
-// 	alert(max_price);
-//     alert("max_price:"+max_price);
-// 	alert(max_price+"<="+maxPrice+" is "+(max_price <= maxPrice));
 	var ss=max_price <= maxPrice;
 	var cs=max_price <= price;
-//  	alert(max_price+ "<="+ price+" is "+cs);
-//  	if (max_price=="") {
-// 		alert("空值");
-// 		return false;
-// 	}
-//  alert("!max_price:"+dd);
-	//判断session里面是否有user，就是用户是否登录，不登陆不能参与竞拍
+
 	if(session == "error") {
-		alert("请先登录！");
+		alert("vui lòng đăng nhập trước!");
 		return false;
 	} 
 	else if(type=="book") {
 		if(ss){
-			alert("竞拍价格不能小于等于原价格!");
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá gốc!");
 			return false;
 		}
 		if(cs) {
-			alert("竞拍价格不能小于等于起拍价格!")
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá khởi điểm!")
 			return false;
 		}
 // 		alert("book");
@@ -108,11 +99,11 @@ function auction() {
 	} 
 	else if(type == "watch") {
 		if(ss) {
-			alert("竞拍价格不能小于等于原价格!");
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá gốc!");
 			return false;
 		}
 		if(cs) {
-			alert("竞拍价格不能小于等于起拍价格!")
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá khởi điểm!")
 			return false;
 		}
 // 		alert("watch");
@@ -120,11 +111,11 @@ function auction() {
 	}
 	else if(type == "stamp") {
 		if(ss) {
-			alert("竞拍价格不能小于等于原价格!");
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá gốc!");
 			return false;
 		}
 		if(cs) {
-			alert("竞拍价格不能小于等于起拍价格!")
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá khởi điểm!")
 			return false;
 		}
 // 		alert("stamp");
@@ -132,17 +123,15 @@ function auction() {
 	}
 	else if(type == "wine") {
 		if(ss) {
-			alert("竞拍价格不能小于等于原价格!");
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá gốc!");
 			return false;
 		}
 		if(cs) {
-			alert("竞拍价格不能小于等于起拍价格!")
+			alert("Giá đấu thầu không được thấp hơn hoặc bằng giá khởi điểm!")
 			return false;
 		}
-// 		alert("stamp");
 		return true;
 	}
-// 	alert("结尾");
 	return false;
 }	
 	window.onload=timer;
@@ -156,12 +145,9 @@ function auction() {
 			submit.value = "Đấu giá";
 			submit.disabled=true;
 			button.disabled=true;
-			date.innerHTML = "该物品已拍出";
+			date.innerHTML = "Mặt hàng này đã được bán đấu giá";
 		}else{
-// 			var s=parseInt(ss % 60); // 秒
-// 			var mi=parseInt((ss - s) / 60 % 60); // 分钟
-// 			var h=parseInt(((ss - s) / 60 - mi) / 60 % 24); // 小时
-// 			var d=parseInt((((ss - s) / 60 - mi) / 60 - h) / 24) // 天
+
 //                 alert(time);
                 var ss=time/1000;
 				var seconds = parseInt(ss % 60);
@@ -169,18 +155,17 @@ function auction() {
 				var hours = parseInt(((ss-seconds)/60-minutes)/60%24);
 				var days = parseInt((((ss-seconds)/60-minutes)/60-hours) / 24);
 				var interval = setInterval(function(){
-					time = days+"天"+hours+"时"+minutes +"分"+seconds+"秒";
+					time = days+":"+hours+":"+minutes +":"+seconds;
 					date.innerHTML = time;
 					seconds--;
 					if(seconds <=0){
 						if(minutes<=0){
 							if(hours<=0){
 								if(days<=0){
-									//结束
 									submit.disabled=true;
 									button.disabled=true;
 									days=0;hours=0;minute=0;seconds=0;
-									alert("拍卖已结束");
+									alert("đấu giá đã kết thúc");
 									submit.value = "Đấu giá";
 									clearInterval(interval);
 									bid();
@@ -197,23 +182,12 @@ function auction() {
 					
 				},1000);
 			}
-		/* function checkTime(i)
-        {
-            if (i < 10) {
-                i = "0" + i;
-            }
-            return i;
-        } */
-        //结束竞拍的网络请求
           function bid(){
-//         	newA.href="AuctionServlet?type=book&id="+i;
         	var type = "<%=request.getAttribute("type")%>";
-         	//ajax进行post请求
          	var url = "AddOrderServlet";
          	var request = new XMLHttpRequest();
          	request.open("POST", url, true);
          	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//          	alert(type);
          	if (type=="book") {
          		request.send("type=book&goods_id=${commodity.id}&user_id=${commodity.userId}&winner_id=${commodity.winnerId}&bid_price=${commodity.maxPrice}");
 			}

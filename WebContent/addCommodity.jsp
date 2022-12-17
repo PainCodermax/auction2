@@ -71,11 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 <%}else{%>
-    <div>您的登录已过时，请重新登录</div>
+    <div>Thông tin đăng nhập của bạn đã hết hạn, vui lòng đăng nhập lại</div>
     <%}%>
    	<br>
 <script type="text/javascript">
-//表单未填写完全禁止提交
 function SumbitJudge() {
 // 	alert("sada");
     var inputPrice=document.getElementById("inputPrice").value;
@@ -83,15 +82,15 @@ function SumbitJudge() {
 	var fileVal=document.getElementById("File").value;
 // 	alert(fileVal);
 	if (!inputPrice) {
-		alert("请输入起拍价！");
+		alert("Vui lòng nhập giá khởi điểm!");
 		return false;
 	}
 	else if (!inputIntroduce) {
-		alert("请输入拍品简介！");
+		alert("Vui lòng nhập mô tả của cuộc đấu giá!");
 		return false;
 	}
 	else if(!fileVal){
-	    alert("请上传图片！");
+	    alert("Xin vui lòng tải lên một hình ảnh!");
 	    return false;
 	}
 	return true;
